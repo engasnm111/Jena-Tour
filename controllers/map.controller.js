@@ -1,6 +1,16 @@
 const e = require("express");
 const fs = require("fs");
-const db = require("../app.js");
+const mysql = require("mysql");
+const dbConfig = require("../db.js");
+
+const db = mysql.createPool({
+  host: dbConfig.HOST,
+  user: dbConfig.USER,
+  password: dbConfig.PASSWORD,
+  database: dbConfig.DB,
+});
+
+module.exports = db;
 
 // Get Page //
 exports.addMapPage = (req, res) => {
