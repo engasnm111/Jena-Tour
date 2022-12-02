@@ -6,9 +6,29 @@ const app = express();
 const session = require("express-session");
 const MapRoutes = require("./routes/map.routes");
 const usersRoutes = require("./routes/users.routes");
-var db = require("./db");
+const mysql = require("mysql");
+const port = 2000;
+
+// create connection to database
+// the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
+const db = mysql.createConnection({
+  host: "us-cdbr-east-06.cleardb.net",
+  user: "bf3a9dd6fdeed5",
+  password: "0d4be3cf",
+  database: "heroku_26310da32c906f9",
+});
+
+// connect to database
+db.connect((err) => {
+  if (err) {
+    throw err;
+  }
+  console.log("Connected to database");
+});
+global.db = db;
 
 // configure middleware
+app.set("port", process.env.port || port); // set express to use this port
 app.set("views", __dirname + "/views"); // set express to look in this folder to render our view
 app.set("view engine", "ejs"); // configure template engine
 app.use(bodyParser.urlencoded({ extended: false }));
