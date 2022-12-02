@@ -6,7 +6,7 @@ const app = express();
 const session = require("express-session");
 const MapRoutes = require("./routes/map.routes");
 const usersRoutes = require("./routes/users.routes");
-const db = require("./db");
+var db = require("./db");
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
