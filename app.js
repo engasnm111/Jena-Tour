@@ -47,7 +47,6 @@ app.use(
       secure: true,
       maxAge: 3600000,
     },
-    store: new RedisStore(),
     secret: "secret",
     saveUninitialized: true,
     resave: false,
