@@ -57,7 +57,7 @@ exports.getlogin = function (req, res) {
 };
 
 exports.getlogout = function (req, res) {
-  req.session.destroy();
+  req.session = null;
   res.render("login", {
     title: "Admin Login",
     error1: false,
