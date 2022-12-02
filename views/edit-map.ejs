@@ -1,0 +1,269 @@
+<%- include('partials/header') %>
+    <% if (success) { %>
+      <script>
+        Swal.fire({
+          icon: 'success',
+          title: 'Your work has been saved...',
+        })
+      </script>
+      <% } %>
+      <% if (error) { %>
+        <script>
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Plase upload file before add poi",
+          });
+        </script>
+        <% } %> 
+            <% if (map) { %>
+                 <!-- edit map -->
+            <div class="container">
+              <form id="msform" action="" method="post" enctype="multipart/form-data">
+                <fieldset>
+                 <h2 h2 class="fs-title">Edit Map  <%= map.mapgrid_id %></h2>
+                  <div class="form-group">
+                    <label class="left">Map Image</label>
+                      <input  type="text"  name="map_image" id="map_image" readonly value="<%= map.image_cover %>"  placeholder="Map Image Not Found">    
+                      <input  class="right form-control" type="file" name="image" id="image" accept="image/png, image/gif, image/jpeg"></input>
+                  </div>
+                  <div class="form-group">  
+                    <label class="left">Map Details</label>
+                      <input  type="text" name="map3d_name" id="map3d_name" value="<%= map.name %>"  placeholder="Map Name">    
+                      <input  class="right" type="text" name="map_detail" id="map_detail" value="<%= map.description %>"  placeholder="Map Description">                 
+                  </div>
+                  <div class="form-group">
+                    <label class="left">Map3D Image</label>
+                      <input  type="text"  name="map3d_image" id="ma3dp_image" readonly value="<%= map.image_3d %>"  placeholder="Map3D Image Not Found">    
+                      <input class="right form-control" type="file" name="image2" id="image2" accept="image/png, image/gif, image/jpeg"></input>
+                  </div>
+                  <div class="form-group">
+                    <label class="left">POIS</label>
+                    <button  type="submit" name="add" value="add" id="add" class="submit-btn right">Add</button>
+                </div>
+                <br>
+                <br>
+                  <div class="form-group">
+                    <label class="left">POI ID⠀⠀⠀⠀</label>
+                    <input  type="text"  name="poi_id" id="poi_id" placeholder="POI ID" readonly>    
+                    <input  class="right form-control" type="file" name="image3" id="image3" accept="image/png, image/gif, image/jpeg"></input>
+                  </div>
+                  <div class="form-group">
+                    <label class="left">POI Title⠀⠀</label>
+                      <input  type="text"  name="poi_title" id="poi_title" placeholder="POI Title">   
+                      <input class="right"  type="text"  name="poi_description" id="poi_description" placeholder="POI Description">   
+                  </div>    
+                  <% if (poi.length > 0) { %>  
+                  <div class="table-wrapper">
+                    <div class="table-scroll">
+                            <table id="table" class="table table-hovered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">POI ID</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% poi.forEach((poi, index)=> { %>
+                                        <tr>
+                                            <th scope="row">
+                                                <%= poi.poi_id %>
+                                            </th>
+                                            <td><img id="HideImg" src="/assets/img/<%= map.map_id %>/poi_image/<%= poi.image %>"
+                                                    onerror="this.onerror=null; this.src='/assets/img/No_picture_available.png'"
+                                                    class="rounded-circle map-img" alt=""></td>
+                                            <td>
+                                                <%= poi.title %>
+                                            </td>
+                                            <td>
+                                                <%= poi.description %>
+                                            </td>
+                                            <td>
+                                                <a href="../../deletepoi/<%= poi.poi_id %>/<%= mapid %>/<%= map.mapgrid_id %>" id="deletepoi" class="btn btn-sm btn-danger delete icon-delete m-1"></a>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                  
+                    </div>
+      
+                </div>
+                <% } else { %>
+                  <p class="text-center">No POI found</p>
+                  <% } %>
+                  <br>
+                  <button  type="submit" name="save" value="save" id="save" class="submit-btn left">Save</button>
+                  <button  type="submit" name="cancel" value="cancel" class="submit-btn">Cancel</button>
+                  <a value="de0" id="deletez" class="delete-btn rightd">Delete</a>
+               
+                </fieldset>     
+              </form> 
+         
+
+              
+            </div>
+              <% } else { %>
+                <h2 class="text-center">Map Not Found. Go <a href="/map/addpreview">here</a> to add Map.</h2>
+                <% } %>
+
+                <div class="container">
+                  <section class="section-content py-5">
+                    <button type="button"
+                      class="btn-modalx"
+                      data-toggle="modal"
+                      data-target="#exampleModal"
+                      style="
+                        background: url(/assets/img/how-to.png);
+                        width: 90px;
+                        height: 90px;
+                      "
+                    ></button>
+                  </section>
+                </div>
+    <script>
+        let add = document.getElementById("add")
+        let save = document.getElementById("save")
+        let img1 = document.getElementById("image")
+        let img2 = document.getElementById("image2")
+        let img3 = document.getElementById("image3")
+        let deletez = document.getElementById("deletez")
+        add.addEventListener('click', function() {
+          if(img3.files.length == 0){
+            add.value = "error"
+          }else{
+            add.value = "add"
+          }
+        })
+        save.addEventListener('click', function() {
+          if(!img1.files.length == 0 && !img2.files.length == 0 && !img3.files.length == 0) {
+            save.value = "save7"
+          } else if(!img1.files.length == 0 && !img2.files.length == 0){
+            save.value = "save4"
+         } else if(!img2.files.length == 0 && !img3.files.length == 0){
+            save.value = "save6"
+        } else if(!img1.files.length == 0 && !img3.files.length == 0){
+            save.value = "save8"
+          } else if(!img2.files.length == 0 && !img1.files.length == 0){
+            save.value = "save9"
+         } else if(!img2.files.length == 0){
+            save.value = "save3"
+         } else if(!img1.files.length == 0){
+            save.value = "save2"
+         } else if(!img3.files.length == 0){
+            save.value = "save5"
+         } 
+        })
+        deletez.addEventListener('click', function() {
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                          deletez.value = "deletez"
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            location.href = "../../delete/<%= mapid %>/<%= map.mapgrid_id %>";
+                       
+                        }
+                    })
+        })
+
+    </script>
+            <script>
+    
+              var table = document.getElementById('table');
+              
+              for(var i = 1; i < table.rows.length; i++)
+              {
+                  table.rows[i].onclick = function()
+                  {
+                       //rIndex = this.rowIndex;
+                       document.getElementById("poi_id").value = this.cells[0].innerText;
+                       document.getElementById("poi_title").value = this.cells[2].innerText;
+                       document.getElementById("poi_description").value = this.cells[3].innerText;
+                  };
+              }
+  
+       </script>
+  </div>
+<div class="modal fade"
+id="exampleModal"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+   
+      <!-- Add image inside the body of modal -->
+      <div class="modal-body">
+          <img id="image" src=
+"/assets/img/howtouse.png" width="100%"
+              alt="Click on button" />
+      </div>
+
+      <div class="modal-footer">
+          <button type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal">
+              Close
+      </button>
+      </div>
+  </div>
+</div>
+</div>
+
+  </body>
+
+  </html>
+
+
+
+<style>
+  a{
+  text-decoration: none;
+}
+  @media screen and (max-width: 1080px) {
+.right {
+float: none;
+}
+.delete-btn{
+  margin-right: 80px;
+}
+.left {
+float: none;
+}
+
+.btn-modal2 {
+  bottom: auto;
+  margin: 10px;
+
+}}
+@media screen and (max-width: 500px){
+.delete-btn {
+    margin-right: 55px;
+    margin-top: 8px;
+} 
+}
+
+
+</style>
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/popper.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/jquery.sticky.js"></script>
+  <script src="/assets/js/main.js"></script>

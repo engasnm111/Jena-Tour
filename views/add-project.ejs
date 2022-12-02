@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+  <div class="container">
+            <form id="msform" action="" method="post" enctype="multipart/form-data">
+              <fieldset>
+                <h2 class="fs-title">Add Map Cover</h2>
+                <label>Map ID</label>
+                <div class="form-group">
+                  <input type="text" name="map_id" id="map_id" value="<%= map %>"  readonly placeholder="Map ID" class="text-center " />
+                </div>
+                <label>Map Name</label>
+                <div class="form-group">
+                  <input type="text" name="map_name" id="map_name"  placeholder="Map Name" class="text-center " />
+                </div>
+                <div class="form-group">
+                  <label for="map_id">Map Description</label>
+                  <br>
+                  <input type="text" name="map_description" id="map_description" placeholder="Map Description" class="text-center " />
+                </div>
+                <div class="file-upload">
+                  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Browse Image . . .</button>
+                  <div class="image-upload-wrap">
+                    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/png, image/gif, image/jpeg" required
+                      name="image" />
+                    <div class="drag-text">
+                      <h3>Drag and drop a file or select add Image</h3>
+                    </div>
+                  </div>
+                  <div class="file-upload-content">
+                    <img class="file-upload-image" src="#" alt="your image" />
+                    <div class="image-title-wrap">
+                      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
+                          class="image-title">Uploaded Image</span></button>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="submit-btn">Add Project</button>
+              </fieldset>
+            </form>
+  </div>
+  </div>
+  </body>
+
+  </html>
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/popper.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/jquery.sticky.js"></script>
+  <script src="/assets/js/main.js"></script>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/assets/fonts/icomoon/style.css" />
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/custom.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+    <script src="/assets/js/sweetalert2.all.min.js"></script>
+    <script src="/assets/js/aframe.min.js"></script>
+    <script src="/assets/js/aframe-master.js"></script>
+    <script src="/assets/js/aframe-environment-component.min.js"></script>
+    <script src="/assets/js/info-message.js"></script>
+    <script src="/assets/js/highlight.js"></script>
+    <script src="/assets/js/info-panel.js"></script>
+    <title><%= title %></title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+  </head>
+
+  <style>
+    @media (max-width: 1270px) {
+      .modal-content {
+        margin-top: 0;
+      }
+    }
+    @media (min-width: 2560px) {
+      .modal-content {
+        margin-top: 0;
+      }
+    }
+    #myImg {
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #myImg:hover {
+      opacity: 0.7;
+    }
+
+    /* The Modal (background) */
+    .modal2 {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1070; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0); /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content2 {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 1000px;
+    }
+
+    /* Add Animation */
+    .modal-content2 {
+      -webkit-animation-name: zoom;
+      -webkit-animation-duration: 0.6s;
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+      from {
+        -webkit-transform: scale(0);
+      }
+      to {
+        -webkit-transform: scale(1);
+      }
+    }
+
+    @keyframes zoom {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    /* The Close Button */
+    .close2 {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close2:hover,
+    .close2:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px) {
+      .modal-content {
+        width: 100%;
+      }
+    }
+  </style>
+  <body>
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <header class="site-navbar site-navbar-target mb-5" role="banner">
+      <div class="container">
+        <div class="row align-items-center position-relative">
+          <div class="col-3">
+            <div class="site-logo">
+              <a href="/"
+                ><img
+                  class="logo"
+                  src="/assets/img/logo.png"
+                  alt=""
+                  width="200px"
+                  height="60px"
+              /></a>
+            </div>
+          </div>
+
+          <div class="col-9">
+            <span class="d-inline-block d-lg-none right"
+              ><a
+                href="#"
+                class="text-primary site-menu-toggle js-menu-toggle py-5"
+                ><span class="icon-menu h3 text-white"></span></a
+            ></span>
+            <nav
+              class="site-navigation ml-auto d-none d-lg-block float-end"
+              role="navigation"
+            >
+              <ul class="site-menu main-menu js-clone-nav ml-auto">
+                <li class="active"><a href="/" class="nav-link">Home</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <% if (map.length> 0) { %> <% map.forEach((map, index)=> { %>
+    <a-scene>
+      <a-entity camera look-controls></a-entity>
+      <a-sky
+        src="/assets/img/<%= mapid %>/image_3d/<%= map.image_3d %>"
+        rotation="0 -130 0"
+      ></a-sky>
+    </a-scene>
+
+    <% if (poi.length) { %> <% for (let i = 0;i < poi.length ;i++) {%>
+    <div class="container">
+      <section class="section-content py-5">
+        <button
+          class="btn-modal<%= i+1 %>"
+          data-toggle="modal"
+          data-target="#a<%= i+1 %>"
+          style="
+            background: url(/assets/img/poi.png);
+            width: 100px;
+            height: 100px;
+          "
+        ></button>
+      </section>
+    </div>
+    <div id="a<%= i+1 %>" class="modal fixed-left fade">
+      <div class="modal-dialog modal-dialog-aside" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><%= poi[i].title %></h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <img
+            id="myImg"
+            class="img-poi"
+            src="/assets/img/<%= mapid %>/poi_image/<%= poi[i].image %>"
+            alt=""
+          />
+
+          <div class="modal-body">
+            <p><%= poi[i].description %></p>
+          </div>
+          <img class="girlz" src="/assets/img/girl.png" alt="" />
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %> <% } %> <% }) %> <% } else { %>
+    <p class="text-center">
+      No Map found. Go <a href="/map/add-map3d-preview">here</a> to add Map.
+    </p>
+    <% } %>
+    <div id="myModal2" class="modal2">
+      <span class="close2">&times;</span>
+      <img class="modal-content2" id="img01" />
+    </div>
+  </body>
+</html>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal2");
+
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("myImg");
+  var modalImg = document.getElementById("img01");
+  img.onclick = function () {
+    modal.style.display = "block";
+    modalImg.src = this.src;
+  };
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close2")[0];
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+</script>
+
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/jquery.sticky.js"></script>
+<script src="/assets/js/main.js"></script>

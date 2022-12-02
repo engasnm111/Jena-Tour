@@ -1,0 +1,68 @@
+<%- include('partials/header') %>
+<style>img{
+  cursor: pointer;
+}</style>
+<div class="container">
+  <h2 style="text-align: center;">Please Select Project</h2>
+  <div class="grid3"> 
+    <!-- check map if not empty-->
+    <% if (map.length) {%>  
+         <!-- show map in db-->
+          <% for (let i = 0;i < map.length;i++) {%>
+          <form id="msform" action="/map/preview/<%= i+1 %>" style="width: 450px;">
+            <fieldset>
+              <label>Map Name</label>
+              <div class="form-group">
+                <input type="text" name="map_name" id="map_name" value="<%= map[i].name %>"  readonly placeholder="Map Name" class="text-center " />
+              </div>
+              <img src="/assets/img/<%= map[i].map_id %>/<%= map[i].image %>" style="width: 200px;" onclick="location.href='/map/preview/<%= i+1 %>'">
+              <br>
+              <br>
+              <button type="submit" class="submit-btn">Go to Preview</button>
+            </fieldset>
+          </form>
+            <% } %>
+             <!-- if map == 1  show add new project -->
+          <% if (map.length == 1) {%>
+            <form id="msform" action="/map/addproject/2" style="width: 450px;">
+              <fieldset>
+                <h2 class="fs-title">Add New Project</h2>
+                <img src="/assets/img/plus.png" style="width: 200px;" onclick="location.href='/map/addproject/2'">
+                <button class="submit-btn">Add new Project</button>
+              </fieldset>
+            </form>
+            <% } else { %>
+                   <!-- else if map != 1  show add new project -->
+              <% let x = map[map.length -1] %>
+              <% let y = x.map_id+1 %>
+              <form id="msform" action="/map/addproject/<%= y %>" style="width: 450px;">
+                <fieldset>
+                  <h2 class="fs-title">Add New Project</h2>
+                  <img src="/assets/img/plus.png" style="width: 200px;" onclick="location.href='/map/addproject/<%= y %>'">
+                  <button class="submit-btn">Add new Project</button>
+                </fieldset>
+              </form>
+              <% } %>
+         <!-- else if map > 1 show add new project -->
+      <% } else { %>
+        <form id="msform" action="/map/addproject/1" style="width: 450px;">
+          <fieldset>
+            <h2 class="fs-title">Add New Project</h2>
+            <img src="/assets/img/plus.png" style="width: 200px;" onclick="location.href='/map/addproject/1'">
+            <button class="submit-btn">Add new Project</button>
+          </fieldset>
+        </form>
+              <% } %>
+</div>
+</div>
+
+  </div>
+  </body>
+  </html>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/popper.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/jquery.sticky.js"></script>
+  <script src="/assets/js/main.js"></script>
