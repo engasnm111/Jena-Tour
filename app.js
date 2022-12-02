@@ -7,28 +7,23 @@ const app = express();
 const session = require("express-session");
 const MapRoutes = require("./routes/map.routes");
 const usersRoutes = require("./routes/users.routes");
-const port = 2000;
-
-// create connection to database
-// the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
-const db = mysql.createConnection({
-  host: "us-cdbr-east-06.cleardb.net",
-  user: "bf3a9dd6fdeed5",
-  password: "0d4be3cf",
-  database: "heroku_26310da32c906f9",
+const dbConfig = require("./db.js");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });
 
-// connect to database
-db.connect((err) => {
-  if (err) {
-    throw err;
-  }
-  console.log("Connected to database");
+const db = mysql.createPool({
+  host: dbConfig.HOST,
+  user: dbConfig.USER,
+  password: dbConfig.PASSWORD,
+  database: dbConfig.DB,
 });
-global.db = db;
+
+module.exports = db;
 
 // configure middleware
-app.set("port", process.env.port || port); // set express to use this port
+app.set("port", process.env.PORT || PORT); // set express to use this port
 app.set("views", __dirname + "/views"); // set express to look in this folder to render our view
 app.set("view engine", "ejs"); // configure template engine
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -131,9 +126,4 @@ app.get("*", function (req, res, next) {
   res.render("404.ejs", {
     title: "Page Not Found",
   });
-});
-
-// set the app to listen on the port
-app.listen(port, () => {
-  console.log(`Server running on port: ${port}`);
 });
