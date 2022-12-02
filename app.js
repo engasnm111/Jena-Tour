@@ -7,7 +7,10 @@ const session = require("express-session");
 const MapRoutes = require("./routes/map.routes");
 const usersRoutes = require("./routes/users.routes");
 const mysql = require("mysql");
-const port = 2000;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
 
 // create connection to database
 // the mysql.createConnection function takes in a configuration object which contains host, user, password and the database name.
@@ -28,7 +31,7 @@ db.connect((err) => {
 global.db = db;
 
 // configure middleware
-app.set("port", process.env.port || port); // set express to use this port
+app.set("port", process.env.PORT || PORT); // set express to use this port
 app.set("views", __dirname + "/views"); // set express to look in this folder to render our view
 app.set("view engine", "ejs"); // configure template engine
 app.use(bodyParser.urlencoded({ extended: false }));
