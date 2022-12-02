@@ -1,6 +1,6 @@
 const e = require("express");
 const fs = require("fs");
-const db = require("../db.js");
+const db = require("../app.js");
 
 // Get Page //
 exports.addMapPage = (req, res) => {

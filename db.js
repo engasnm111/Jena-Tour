@@ -1,10 +1,6 @@
-const mysql = require("mysql");
-
-const db = mysql.createPool({
+module.exports = {
   HOST: "us-cdbr-east-06.cleardb.net",
   USER: "bf3a9dd6fdeed5",
   PASSWORD: "0d4be3cf",
   DB: "heroku_26310da32c906f9",
-});
-
-module.exports = db;
+};
