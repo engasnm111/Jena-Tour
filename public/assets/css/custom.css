@@ -241,24 +241,6 @@ label {
 .modal-body {
   border-radius: 20px;
 }
-@media screen and (max-width: 470px) {
-  .img-map {
-    height: 35px;
-    width: 35px;
-  }
-
-  .image-grid {
-    height: 35px;
-    width: 35px;
-  }
-  .image-grid2 {
-    height: 35px;
-    width: 35px;
-  }
-  .popup {
-    font-size: 2rem;
-  }
-}
 
 @media screen and (max-width: 1800px) {
   .img-map {
@@ -308,24 +290,43 @@ label {
 
 @media screen and (max-width: 1300px) {
   .img-map {
-    height: 55px;
-    width: 55px;
+    height: 45px;
+    width: 45px;
   }
 
   .image-grid {
-    height: 55px;
-    width: 55px;
+    height: 45px;
+    width: 45px;
   }
   .image-grid2 {
-    height: 55px;
-    width: 55px;
+    height: 45px;
+    width: 45px;
   }
   .popup {
     font-size: 2rem;
   }
   .gridem {
-    height: 55px;
-    width: 55px;
+    height: 45px;
+    width: 45px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .img-map {
+    height: 35px;
+    width: 35px;
+  }
+
+  .image-grid {
+    height: 35px;
+    width: 35px;
+  }
+  .image-grid2 {
+    height: 35px;
+    width: 35px;
+  }
+  .popup {
+    font-size: 2rem;
   }
 }
 
@@ -373,6 +374,13 @@ label {
 .logo {
   width: 140px;
   height: 110px;
+}
+
+@media screen and (max-width: 1500px) {
+  .logo {
+    width: 120px;
+    height: 110px;
+  }
 }
 @media screen and (max-width: 1080px) {
   .logo {
@@ -1066,8 +1074,6 @@ h2 {
   margin-top: 3rem;
   margin-bottom: 3rem;
   max-width: 100%;
-  width: 500px;
-  height: auto;
 }
 
 .modal-content {
@@ -1493,6 +1499,24 @@ h1 {
   bottom: 0;
   margin: auto;
 }
+
+.btn-modal1 {
+  background: url(../img/poi.png);
+  width: 100px;
+  height: 100px;
+}
+
+.btn-modal2 {
+  background: url(../img/poi.png);
+  width: 100px;
+  height: 100px;
+}
+
+.btn-modal3 {
+  background: url(../img/poi.png);
+  width: 100px;
+  height: 100px;
+}
 @media screen and (max-width: 700px) {
   .girlz {
     height: 150px;
@@ -1503,6 +1527,28 @@ h1 {
   .girlz {
     height: 150px;
     width: 150px;
+  }
+}
+@media screen and (max-width: 420px) {
+  .girlz {
+    display: none;
+  }
+  .btn-modal1 {
+    background: url(../img/poi_small.png);
+    width: 50px;
+    height: 50px;
+  }
+  .btn-modal2 {
+    background: url(../img/poi_small.png);
+    width: 50px;
+    height: 50px;
+    margin: 5rem 10rem 5rem 5rem;
+  }
+  .btn-modal3 {
+    background: url(../img/poi_small.png);
+    width: 50px;
+    height: 50px;
+    margin: 5rem 15rem 5rem 5rem;
   }
 }
 @media screen and (max-height: 400px) {
