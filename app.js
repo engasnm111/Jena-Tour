@@ -20,8 +20,6 @@ const db = mysql.createPool({
   database: dbConfig.DB,
 });
 
-module.exports = db;
-
 // configure middleware
 app.set("port", process.env.PORT || PORT); // set express to use this port
 app.set("views", __dirname + "/views"); // set express to look in this folder to render our view
@@ -127,3 +125,5 @@ app.get("*", function (req, res, next) {
     title: "Page Not Found",
   });
 });
+
+module.exports = db;

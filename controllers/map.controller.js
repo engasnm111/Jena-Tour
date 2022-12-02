@@ -10,8 +10,6 @@ const db = mysql.createPool({
   database: dbConfig.DB,
 });
 
-module.exports = db;
-
 // Get Page //
 exports.addMapPage = (req, res) => {
   let mapid = req.params.map_id;
@@ -930,3 +928,5 @@ exports.deletePOI = (req, res) => {
 };
 
 /// End Post page
+
+module.exports = db;

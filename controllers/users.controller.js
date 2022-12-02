@@ -9,8 +9,6 @@ const db = mysql.createPool({
   database: dbConfig.DB,
 });
 
-module.exports = db;
-
 exports.getloginpage = function (req, res) {
   // If the user is loggedin
   if (req.session.loggedin) {
@@ -79,3 +77,5 @@ exports.getlogout = function (req, res) {
   });
   res.end();
 };
+
+module.exports = db;
