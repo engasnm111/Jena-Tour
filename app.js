@@ -1,23 +1,15 @@
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
-const mysql = require("mysql");
 const path = require("path");
 const app = express();
 const session = require("express-session");
 const MapRoutes = require("./routes/map.routes");
 const usersRoutes = require("./routes/users.routes");
-const dbConfig = require("./db.js");
+const db = require("./db");
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
-});
-
-const db = mysql.createPool({
-  host: dbConfig.HOST,
-  user: dbConfig.USER,
-  password: dbConfig.PASSWORD,
-  database: dbConfig.DB,
 });
 
 // configure middleware
@@ -125,5 +117,3 @@ app.get("*", function (req, res, next) {
     title: "Page Not Found",
   });
 });
-
-module.exports = db;
