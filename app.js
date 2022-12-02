@@ -3,7 +3,7 @@ const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
-const session = require("express-session");
+var cookieSession = require("cookie-session");
 const MapRoutes = require("./routes/map.routes");
 const usersRoutes = require("./routes/users.routes");
 const mysql = require("mysql");
@@ -39,26 +39,16 @@ app.use(bodyParser.json()); // parse form data client
 app.use(express.static(path.join(__dirname, "public"))); // configure express to use public folder
 app.use(fileUpload()); // configure fileupload
 
-app.set("trust proxy", 1);
+app.set("trust proxy", 1); // trust first proxy
 
 app.use(
-  session({
-    cookie: {
-      secure: true,
-      maxAge: 3600000,
-    },
-    secret: "secret",
-    saveUninitialized: true,
-    resave: false,
+  cookieSession({
+    name: "session",
+    keys: ["key1", "key2"],
+    // Cookie Options
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
   })
 );
-
-app.use(function (req, res, next) {
-  if (!req.session) {
-    return next(new Error("Oh no")); //handle error
-  }
-  next(); //otherwise continue
-});
 
 // routes for the app
 app.use("/map", MapRoutes);
