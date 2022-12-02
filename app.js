@@ -39,14 +39,27 @@ app.use(bodyParser.json()); // parse form data client
 app.use(express.static(path.join(__dirname, "public"))); // configure express to use public folder
 app.use(fileUpload()); // configure fileupload
 
+app.set("trust proxy", 1);
+
 app.use(
   session({
+    cookie: {
+      secure: true,
+      maxAge: 3600000,
+    },
+    store: new RedisStore(),
     secret: "secret",
-    resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 3600 * 1000 }, //1hr
+    resave: false,
   })
 );
+
+app.use(function (req, res, next) {
+  if (!req.session) {
+    return next(new Error("Oh no")); //handle error
+  }
+  next(); //otherwise continue
+});
 
 // routes for the app
 app.use("/map", MapRoutes);
