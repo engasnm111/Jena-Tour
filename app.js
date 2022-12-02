@@ -7,13 +7,8 @@ const session = require("express-session");
 const MapRoutes = require("./routes/map.routes");
 const usersRoutes = require("./routes/users.routes");
 var db = require("./db");
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
 
 // configure middleware
-app.set("port", process.env.PORT || PORT); // set express to use this port
 app.set("views", __dirname + "/views"); // set express to look in this folder to render our view
 app.set("view engine", "ejs"); // configure template engine
 app.use(bodyParser.urlencoded({ extended: false }));

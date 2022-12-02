@@ -5,6 +5,7 @@ dbConnectionInfo = {
   USER: "bf3a9dd6fdeed5",
   PASSWORD: "0d4be3cf",
   DB: "heroku_26310da32c906f9",
+  PORT: "3306",
   connectionLimit: 5, //mysql connection pool length
 };
 
