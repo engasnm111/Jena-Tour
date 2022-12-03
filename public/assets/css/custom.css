@@ -136,6 +136,9 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
 body {
   font-family: "Baloo 2", cursive;
 }
