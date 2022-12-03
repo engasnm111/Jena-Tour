@@ -44,12 +44,12 @@
                 <br>
                 <br>
                   <div class="form-group">
-                    <label class="left">POI ID⠀⠀⠀⠀</label>
+                    <label class="left" style="margin-right: 2.5rem;">POI ID</label>
                     <input  type="text"  name="poi_id" id="poi_id" placeholder="POI ID" readonly>    
                     <input  class="right form-control" type="file" name="image3" id="image3" accept="image/png, image/gif, image/jpeg"></input>
                   </div>
                   <div class="form-group">
-                    <label class="left">POI Title⠀⠀</label>
+                    <label class="left" style="margin-right: 2rem;" >POI Title</label>
                       <input  type="text"  name="poi_title" id="poi_title" placeholder="POI Title">   
                       <input class="right"  type="text"  name="poi_description" id="poi_description" placeholder="POI Description">   
                   </div>    
@@ -98,13 +98,10 @@
                   <br>
                   <button  type="submit" name="save" value="save" id="save" class="submit-btn left">Save</button>
                   <button  type="submit" name="cancel" value="cancel" class="submit-btn">Cancel</button>
-                  <a value="de0" id="deletez" class="delete-btn rightd">Delete</a>
-               
+                  <a value="de0" id="deletez" class="delete-btn right">delete</a>              
                 </fieldset>     
               </form> 
-         
-
-              
+           
             </div>
               <% } else { %>
                 <h2 class="text-center">Map Not Found. Go <a href="/map/addpreview">here</a> to add Map.</h2>
@@ -240,9 +237,6 @@ aria-hidden="true">
 .right {
 float: none;
 }
-.delete-btn{
-  margin-right: 80px;
-}
 .left {
 float: none;
 }
@@ -252,18 +246,6 @@ float: none;
   margin: 10px;
 
 }}
-@media screen and (max-width: 500px){
-.delete-btn {
-    margin-right: 55px;
-    margin-top: 8px;
-} 
-}
-@media screen and (max-width: 420px){
-.delete-btn {
-    margin-right: 22px;
-    margin-top: 8px;
-}
-}
 </style>
 
   <script src="/assets/js/jquery-3.3.1.min.js"></script>

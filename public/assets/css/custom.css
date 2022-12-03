@@ -1342,6 +1342,7 @@ a:hover {
 }
 .delete-btn {
   width: 200px;
+  display: inline-block;
   margin: 0;
   color: #fff;
   background: #f82307;
@@ -1549,6 +1550,19 @@ h1 {
     width: 50px;
     height: 50px;
     margin: 5rem 15rem 5rem 5rem;
+  }
+  #msform input,
+  #msform textarea {
+    width: 150px;
+  }
+  #msform input[type="file"] {
+    width: 150px;
+  }
+  .submit-btn {
+    width: 150px;
+  }
+  .delete-btn {
+    width: 150px;
   }
 }
 @media screen and (max-height: 400px) {
