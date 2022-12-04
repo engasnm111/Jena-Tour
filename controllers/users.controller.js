@@ -1,5 +1,3 @@
-const db = require("../db.js");
-
 exports.getloginpage = function (req, res) {
   // If the user is loggedin
   if (req.session.loggedin) {
