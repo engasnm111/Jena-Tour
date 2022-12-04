@@ -1,4 +1,4 @@
-var db = require("../app.js");
+var db = require("../db");
 
 // Get Page //
 exports.addMapPage = (req, res) => {
