@@ -1,14 +1,5 @@
 const db = require("../db.js");
 
-db.getConnection((err, connection) => {
-  if (err) {
-    console.log("Error while connecting ", err);
-  } else {
-    if (connection) connection.release();
-    console.log("Database Connected Successfully!");
-  }
-});
-
 // Get Page //
 exports.addMapPage = (req, res) => {
   let mapid = req.params.map_id;

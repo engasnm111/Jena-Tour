@@ -1,14 +1,5 @@
 const db = require("../db.js");
 
-db.getConnection((err, connection) => {
-  if (err) {
-    console.log("Error while connecting ", err);
-  } else {
-    if (connection) connection.release();
-    console.log("Database Connected Successfully!");
-  }
-});
-
 exports.getloginpage = function (req, res) {
   // If the user is loggedin
   if (req.session.loggedin) {
