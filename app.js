@@ -20,10 +20,6 @@ var db = mysql.createPool({
   database: dbConfig.DB,
 });
 
-db.query("select 1 + 1", (err, rows) => {
-  /* */
-});
-
 // configure middleware
 app.set("port", process.env.PORT || PORT); // set express to use this port
 app.set("views", __dirname + "/views"); // set express to look in this folder to render our view
