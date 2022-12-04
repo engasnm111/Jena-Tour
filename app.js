@@ -14,14 +14,17 @@ app.listen(PORT, () => {
 });
 
 var db = mysql.createPool({
+  connectionLimit: 4,
   host: dbConfig.HOST,
   user: dbConfig.USER,
   password: dbConfig.PASSWORD,
   database: dbConfig.DB,
 });
 
-db.query("select 1 + 1", (err, rows) => {
-  /* */
+db.getConnection((err, connection) => {
+  if (err) throw err;
+  console.log("Database connected successfully");
+  connection.release();
 });
 
 // configure middleware

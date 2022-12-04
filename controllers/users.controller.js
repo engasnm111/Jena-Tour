@@ -1,9 +1,5 @@
 var db = require("../app.js");
 
-db.query("select 1 + 1", (err, rows) => {
-  /* */
-});
-
 exports.getloginpage = function (req, res) {
   // If the user is loggedin
   if (req.session.loggedin) {
