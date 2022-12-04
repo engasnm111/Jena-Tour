@@ -916,8 +916,3 @@ exports.deletePOI = (req, res) => {
 
   // });
 };
-
-/// End Post page
-db.query("select 1 + 1", (err, rows) => {
-  /* */
-});
