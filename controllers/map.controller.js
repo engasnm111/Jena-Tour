@@ -1,5 +1,10 @@
 var db = require("../app.js");
 
+/// End Post page
+db.query("select 1 + 1", (err, rows) => {
+  /* */
+});
+
 // Get Page //
 exports.addMapPage = (req, res) => {
   let mapid = req.params.map_id;
@@ -916,8 +921,3 @@ exports.deletePOI = (req, res) => {
 
   // });
 };
-
-/// End Post page
-db.query("select 1 + 1", (err, rows) => {
-  /* */
-});
