@@ -1,4 +1,4 @@
-const db = require("../app");
+const db = require("../db");
 
 // Get Page //
 exports.addMapPage = (req, res) => {

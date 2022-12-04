@@ -1,12 +1,11 @@
-const mysql = require("mysql");
-const dbConfig = require("dbconfig.js");
+const mysql = require("mysql2");
 
 var db = mysql.createPool({
   connectionLimit: 10,
-  host: dbConfig.HOST,
-  user: dbConfig.USER,
-  password: dbConfig.PASSWORD,
-  database: dbConfig.DB,
+  host: "us-cdbr-east-06.cleardb.net",
+  user: "bf3a9dd6fdeed5",
+  password: "0d4be3cf",
+  database: "heroku_26310da32c906f9",
 });
 
 module.exports = db;
