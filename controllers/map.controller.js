@@ -1,3 +1,5 @@
+var db = require("../db.js");
+
 // Get Page //
 exports.addMapPage = (req, res) => {
   let mapid = req.params.map_id;
