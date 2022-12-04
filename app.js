@@ -7,6 +7,7 @@ var cookieSession = require("cookie-session");
 const MapRoutes = require("./routes/map.routes");
 const usersRoutes = require("./routes/users.routes");
 const db = require("db");
+const { Module } = require("module");
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
@@ -119,3 +120,5 @@ app.get("*", function (req, res, next) {
     title: "Page Not Found",
   });
 });
+
+module.exports = db;
