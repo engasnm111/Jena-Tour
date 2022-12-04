@@ -1,4 +1,7 @@
 const db = require("../db");
+const conn = await db.connection();
+const result = db.execute("select 1 + 1");
+conn.release();
 
 exports.getloginpage = function (req, res) {
   // If the user is loggedin

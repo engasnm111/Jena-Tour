@@ -7,6 +7,10 @@ var cookieSession = require("cookie-session");
 const MapRoutes = require("./routes/map.routes");
 const usersRoutes = require("./routes/users.routes");
 const db = require("db");
+const conn = await db.connection();
+const result = db.execute("select 1 + 1");
+conn.release();
+
 const { Module } = require("module");
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
