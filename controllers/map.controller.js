@@ -1,5 +1,3 @@
-const db = require("../app");
-
 // Get Page //
 exports.addMapPage = (req, res) => {
   let mapid = req.params.map_id;
