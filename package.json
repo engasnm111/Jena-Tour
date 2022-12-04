@@ -20,7 +20,6 @@
     "express-validator": "^6.14.2",
     "multiparty": "^4.2.3",
     "mysql": "^2.18.1",
-    "mysql2": "^2.3.3",
     "sweetalert2": "^11.6.0"
   }
 }

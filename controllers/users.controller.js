@@ -1,4 +1,4 @@
-var db = require("../db.js");
+var db = require("../app.js");
 
 exports.getloginpage = function (req, res) {
   // If the user is loggedin
