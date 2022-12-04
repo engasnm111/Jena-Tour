@@ -7,6 +7,13 @@ var db = mysql.createPool({
   database: "heroku_962c2ea55add6f7",
 });
 
+// var db = mysql.createPool({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "utcc",
+// });
+
 db.getConnection((err, connection) => {
   if (err) {
     console.log("Error while connecting ", err);
