@@ -10,4 +10,4 @@ var db = mysql
   })
   .promise();
 
-module.exports = db;
+global.db = db;

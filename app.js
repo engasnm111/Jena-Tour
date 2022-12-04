@@ -6,24 +6,11 @@ const app = express();
 var cookieSession = require("cookie-session");
 const MapRoutes = require("./routes/map.routes");
 const usersRoutes = require("./routes/users.routes");
-const mysql = require("mysql2");
 const { Module } = require("module");
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-
-var db = mysql
-  .createPool({
-    connectionLimit: 10,
-    host: "us-cdbr-east-06.cleardb.net",
-    user: "bf3a9dd6fdeed5",
-    password: "0d4be3cf",
-    database: "heroku_26310da32c906f9",
-  })
-  .promise();
-
-global.db = db;
 
 // configure middleware
 app.set("port", process.env.PORT || PORT); // set express to use this port
