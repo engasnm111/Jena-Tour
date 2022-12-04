@@ -8,4 +8,4 @@ var db = mysql.createPool({
   database: "heroku_26310da32c906f9",
 });
 
-module.exports = db;
+Module.exports = db;

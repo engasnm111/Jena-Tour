@@ -120,3 +120,4 @@ app.get("*", function (req, res, next) {
     title: "Page Not Found",
   });
 });
+module.exports = db;
