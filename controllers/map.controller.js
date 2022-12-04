@@ -1,7 +1,4 @@
 const db = require("../db");
-const conn = await db.connection();
-const result = db.execute("select 1 + 1");
-conn.release();
 
 // Get Page //
 exports.addMapPage = (req, res) => {
