@@ -13,6 +13,15 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
+db.getConnection((err, connection) => {
+  if (err) {
+    console.log("Error while connecting ", err);
+  } else {
+    if (connection) connection.release();
+    console.log("Database Connected Successfully!");
+  }
+});
+
 // configure middleware
 app.set("port", process.env.PORT || PORT); // set express to use this port
 app.set("views", __dirname + "/views"); // set express to look in this folder to render our view
@@ -120,4 +129,3 @@ app.get("*", function (req, res, next) {
     title: "Page Not Found",
   });
 });
-module.exports = db;
