@@ -2,9 +2,9 @@ const mysql = require("mysql");
 
 var db = mysql.createPool({
   host: "us-cdbr-east-06.cleardb.net",
-  user: "bf3a9dd6fdeed5",
-  password: "0d4be3cf",
-  database: "heroku_26310da32c906f9",
+  user: "bece4ed5f2fc4d",
+  password: "9e80a0bb",
+  database: "heroku_962c2ea55add6f7",
 });
 
 db.getConnection((err, connection) => {
