@@ -68,7 +68,3 @@ exports.getlogout = function (req, res) {
   });
   res.end();
 };
-
-db.query("select 1 + 1", (err, rows) => {
-  /* */
-});
