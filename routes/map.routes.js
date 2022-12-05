@@ -10,6 +10,7 @@ router.get("/preview/:id", MapController.previewMapPage);
 router.get("/edit/:map_id/:id", MapController.editMapPage);
 router.get("/delete/:map_id/:id", MapController.deleteMap);
 router.get("/deletepoi/:poi_id/:map_id/:id", MapController.deletePOI);
+router.get("/deleteproject/:map_id", MapController.deleteproject);
 router.get("/home", MapController.HomeMapPage);
 router.get("/addproject/:id", MapController.addprojectPage);
 

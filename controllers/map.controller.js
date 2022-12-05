@@ -916,3 +916,17 @@ exports.deletePOI = (req, res) => {
 
   // });
 };
+
+exports.deleteproject = (req, res) => {
+  let mapid = req.params.map_id;
+  let deleteQuery = "DELETE FROM map WHERE map_id = '" + mapid + "'";
+
+  db.query(deleteQuery, (err, result) => {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    res.redirect("/map/home");
+  });
+
+  // });
+};
