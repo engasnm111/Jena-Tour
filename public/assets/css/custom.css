@@ -1539,11 +1539,3 @@ h1 {
     grid-template-rows: 1fr 1fr;
   }
 }
-
-@media screen and (max-width: 1000px) {
-  .modal {
-    right: 0;
-    left: unset;
-    width: 50%;
-  }
-}
